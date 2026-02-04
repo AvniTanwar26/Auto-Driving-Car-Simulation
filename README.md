@@ -22,23 +22,26 @@ java -version
 
 ## Project Structure
 
-```
 src/
 ├── main/java/com/autodrive/simulation/
 │   ├── SimulationMain.java          # Main entry point
 │   ├── cli/
-│   │   ├── SimulationCliRunner.java # CLI interface handler
-│   │   └── MovementVisualizer.java  # Visualizes car movement paths
+│   │   ├── SimulationCliRunner.java # Orchestrates simulation flow
+│   │   ├── CarCreator.java          # Handles user input for car creation
+│   │   └── SimulationResultPrinter.java # Handles console output
 │   ├── model/
 │   │   ├── Car.java                 # Car entity with movement logic
-│   │   ├── Direction.java          # Direction enum (N/E/S/W)
-│   │   └── Field.java              # Field boundaries
-│   └── service/
-│       ├── SimulationService.java  # Core simulation engine
-│       └── CollisionResult.java    # Collision result data
+│   │   ├── Direction.java           # Direction enum (N/E/S/W)
+│   │   └── Field.java               # Field boundaries
+│   ├── service/
+│   │   ├── SimulationService.java   # Service Interface
+│   │   ├── SimulationServiceImpl.java # Service Implementation
+│   │   └── CollisionResult.java     # Collision result data
+│   └── visualization/
+│       ├── MovementPatternVisualizer.java # Visualization Interface
+│       └── MovementVisualizer.java  # Visualizes car movement paths
 └── test/java/com/autodrive/simulation/
-    └── ...                         # Unit tests
-```
+    └── ...                          # Unit tests
 
 ## How to Run
 

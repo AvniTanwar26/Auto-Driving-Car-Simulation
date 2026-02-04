@@ -20,6 +20,20 @@ public class SimulationCliRunner {
     private final CarCreator carCreator;
     private final SimulationResultPrinter resultPrinter;
 
+
+    public SimulationCliRunner(
+            SimulationService simulationService,
+            MovementPatternVisualizer movementVisualizer,
+            Scanner scanner
+    ) {
+        this.simulationService = simulationService;
+        this.movementVisualizer = movementVisualizer;
+        this.scanner = scanner;
+        this.carCreator = new CarCreator(scanner);
+        this.resultPrinter = new SimulationResultPrinter();
+    }
+
+
     /**
      * Reads an integer from the console, re-prompting until a valid number is entered.
      */
@@ -33,18 +47,6 @@ public class SimulationCliRunner {
                 System.out.println("Please enter a valid integer.");
             }
         }
-    }
-
-    public SimulationCliRunner(
-            SimulationService simulationService,
-            MovementPatternVisualizer movementVisualizer,
-            Scanner scanner
-    ) {
-        this.simulationService = simulationService;
-        this.movementVisualizer = movementVisualizer;
-        this.scanner = scanner;
-        this.carCreator = new CarCreator(scanner);
-        this.resultPrinter = new SimulationResultPrinter();
     }
 
     /**
