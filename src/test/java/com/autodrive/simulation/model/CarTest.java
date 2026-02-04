@@ -1,6 +1,6 @@
 package com.autodrive.simulation.model;
 
-import com.autodrive.simulation.field.Field;
+import com.autodrive.simulation.model.Field;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

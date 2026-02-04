@@ -1,4 +1,4 @@
-package com.autodrive.simulation.field;
+package com.autodrive.simulation.model;
 
 public class Field {
 

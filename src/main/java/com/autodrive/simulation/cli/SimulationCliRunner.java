@@ -1,6 +1,6 @@
 package com.autodrive.simulation.cli;
 
-import com.autodrive.simulation.field.Field;
+import com.autodrive.simulation.model.Field;
 import com.autodrive.simulation.model.Car;
 import com.autodrive.simulation.service.CollisionResult;
 import com.autodrive.simulation.service.SimulationService;
@@ -58,9 +58,25 @@ public class SimulationCliRunner {
 
         while (running) {
             System.out.println();
-            System.out.println("=== Auto Driving Car Simulation ===");
-            int width = readInt("Enter field width (positive integer): ");
-            int height = readInt("Enter field height (positive integer): ");
+            System.out.println("Welcome to Auto Driving Car Simulation!");
+            System.out.println();
+            System.out.println("Please enter the width and height of the simulation field in x y format:");
+            String inputLine = scanner.nextLine().trim();
+            String[] parts = inputLine.split("\\s+");
+
+            if (parts.length != 2) {
+                System.out.println("Please enter exactly two integers.");
+                continue;
+            }
+
+            int width, height;
+            try {
+                width = Integer.parseInt(parts[0]);
+                height = Integer.parseInt(parts[1]);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid integers.");
+                continue;
+            }
 
             if (width <= 0 || height <= 0) {
                 System.out.println("Field size must be positive. Please try again.");
@@ -68,6 +84,8 @@ public class SimulationCliRunner {
             }
 
             Field field = new Field(width, height);
+            System.out.println();
+            System.out.println("You have created a field of " + width + " x " + height + ".");
             List<Car> cars = addCars(field);
 
             if (!cars.isEmpty()) {
@@ -75,16 +93,16 @@ public class SimulationCliRunner {
             }
 
             System.out.println();
+            System.out.println("Please choose from the following options:");
             System.out.println("[1] Start over");
             System.out.println("[2] Exit");
-            System.out.print("Choose option: ");
             int choice = readInt("");
 
             running = (choice == 1);
         }
 
         System.out.println();
-        System.out.println("Goodbye!");
+        System.out.println("Thank you for running the simulation. Goodbye!");
     }
 
     private List<Car> addCars(Field field) {
@@ -93,9 +111,9 @@ public class SimulationCliRunner {
 
         while (addingCars) {
             System.out.println();
-            System.out.println("[1] Add a car");
-            System.out.println("[2] Start simulation");
-            System.out.print("Choose option: ");
+            System.out.println("Please choose from the following options:");
+            System.out.println("[1] Add a car to field");
+            System.out.println("[2] Run simulation");
             int choice = readInt("");
 
             if (choice == 1) {

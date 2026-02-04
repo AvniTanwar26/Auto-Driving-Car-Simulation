@@ -1,6 +1,6 @@
 package com.autodrive.simulation.cli;
 
-import com.autodrive.simulation.field.Field;
+import com.autodrive.simulation.model.Field;
 import com.autodrive.simulation.model.Car;
 import com.autodrive.simulation.model.Direction;
 
@@ -17,14 +17,14 @@ public class CarCreator {
     }
 
     public Car createCar(Field field) {
-        System.out.print("Enter car name: ");
+        System.out.println("Please enter the name of the car:");
         String name = scanner.nextLine().trim();
         if (name.isEmpty()) {
             System.out.println("Car name cannot be empty.");
             return null;
         }
 
-        System.out.print("Enter initial position (x y Direction): ");
+        System.out.println("Please enter initial position of car " + name + " in x y Direction format:");
         String[] parts = scanner.nextLine().trim().split("\\s+");
 
         try {
@@ -42,7 +42,7 @@ public class CarCreator {
                 return null;
             }
 
-            System.out.print("Enter commands (L/R/F): ");
+            System.out.println("Please enter the commands for car " + name + ":");
             String commands = scanner.nextLine().trim().toUpperCase();
 
             if (commands.isEmpty() || !commands.matches("[LRF]+")) {

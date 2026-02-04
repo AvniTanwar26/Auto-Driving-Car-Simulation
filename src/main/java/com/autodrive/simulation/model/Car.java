@@ -1,7 +1,5 @@
 package com.autodrive.simulation.model;
 
-import com.autodrive.simulation.field.Field;
-
 /**
  * Domain model representing a single car in the simulation.
  * <p>

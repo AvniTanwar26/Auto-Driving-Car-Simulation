@@ -1,6 +1,6 @@
 package com.autodrive.simulation.visualization;
 
-import com.autodrive.simulation.field.Field;
+import com.autodrive.simulation.model.Field;
 import com.autodrive.simulation.model.Car;
 import com.autodrive.simulation.model.Direction;
 
