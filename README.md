@@ -257,16 +257,36 @@ Thank you for running the simulation. Goodbye!
 
 ## Running Tests
 
-To run all unit tests:
+### Run All Tests (Unit + Integration)
 
 ```bash
 ./gradlew test
 ```
 
-To generate test coverage report:
+### Run Only Integration Tests
+
+Run end-to-end integration tests that verify complete system flow:
 
 ```bash
-./gradlew jacocoTestReport
+./gradlew test --tests "com.autodrive.simulation.integration.EndToEndIntegrationTest"
+```
+
+Run with detailed output:
+
+```bash
+./gradlew test --tests "com.autodrive.simulation.integration.EndToEndIntegrationTest" --info
+```
+
+### Run Only Unit Tests
+
+```bash
+./gradlew test --tests "com.autodrive.simulation.model.*" --tests "com.autodrive.simulation.service.*"
+```
+
+### Generate Test Coverage Report
+
+```bash
+./gradlew test jacocoTestReport
 ```
 
 Coverage report will be available at: `build/reports/jacoco/test/html/index.html`
